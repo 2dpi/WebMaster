@@ -1,4 +1,4 @@
 highlighter: pygments
 repository: https://github.com/2dpi/templates
-baseurl: /templates
+baseurl: /WebMaster
 markdown: kramdown
