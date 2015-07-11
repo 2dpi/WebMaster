@@ -29,10 +29,17 @@ keywords: css3, html5, responsive, grid, scalable
 <p>Wordpress Admin Login: http://pc-name:xxxx/wp-admin</p>
 
 
-<p>Alternatively, if you have already changed the site url in Webmatrix, opened the port and shared it over the network edit:  1) wp-config.php by adding these two lines: <code>define('WP_HOME','http://example.com');
-define('WP_SITEURL','http://example.com');</code>  and 2) functions.php by adding these two lines: <code>update_option('siteurl','http://example.com');
-update_option('home','http://example.com');</code></p>
+<p>Alternatively, if you have already changed the site url in Webmatrix, opened the port and shared it over the network edit:  1) wp-config.php by adding these two lines:</p>
+{% highlight php %}
+	define('WP_HOME','http://example.com'); 
+	define('WP_SITEURL','http://example.com');
+{% endhighlight %}  
 
+<p>and 2) functions.php by adding these two lines:</p> 
+{% highlight php %}
+	update_option('siteurl','http://example.com');
+	update_option('home','http://example.com');
+{% endhighlight %} 
 <p></p>
 <p></p>
 <p></p>
