@@ -15,40 +15,9 @@ keywords: css3, html5, responsive, grid, scalable
 
 
 
-<h1>Word Press Landing Page</h1>
-
-<p>Installing Wordpress over a network using Webmatrix</p>
-
-<p><strong>Issue:</strong> Once the port is open and you have shared the site over the network the site will break because you have changed the site urls in Webmatirx from localhost:xxxx* to pc-name*:xxxx</p>
-
-<p><small style="color: red">*xxxx = port no</small><br><small style="color: red">*pc-name: = the-bridge:</small></p>
+<h1>Wordpress Introduction</h1>
 
 
-<p><strong>Fix:</strong> Before you change the site url in Webmatrix, first log in to the backend of Wordpress and click settings, general, change: 1) Wordpress Address (URL): pc-name:xxxx and 2) Site Address (URL): pc-name*:xxxx to what you are going to set it in Webmatrix, then open the port and share over the network</p>
-
-<p>Wordpress Admin Login: http://pc-name:xxxx/wp-admin</p>
-
-
-<p>Alternatively, if you have already changed the site url in Webmatrix, opened the port and shared it over the network in Webmatrix under files select and edit:  1) wp-config.php by adding these two lines:</p>
-{% highlight php %}
-<?php 
-define('WP_HOME','http://example.com'); 
-define('WP_SITEURL','http://example.com');
-?>
-{% endhighlight %}  
-
-
-<p>and then under themes, the theme you have chosen, select and edit: 2) functions.php by adding these two lines:</p> 
-{% highlight php %}
-<?php 
-update_option('siteurl','http://example.com');
-update_option('home','http://example.com');
-?>
-{% endhighlight %} 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
 
 </article>
     </div>
