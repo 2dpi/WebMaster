@@ -30,13 +30,13 @@ keywords: css3, html5, responsive, grid, scalable
 
 
 <p>Alternatively, if you have already changed the site url in Webmatrix, opened the port and shared it over the network edit:  1) wp-config.php by adding these two lines:</p>
-{% highlight %}
+{% highlight html %}
 define('WP_HOME','http://example.com'); 
 define('WP_SITEURL','http://example.com');
 {% endhighlight %}  
 
 <p>and 2) functions.php by adding these two lines:</p> 
-{% highlight %}
+{% highlight html %}
 update_option('siteurl','http://example.com');
 update_option('home','http://example.com');
 {% endhighlight %} 
