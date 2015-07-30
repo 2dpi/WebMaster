@@ -1,0 +1,23 @@
+---
+layout: default
+title: WebMaster Pages
+keywords: forms
+---
+<div class="container_body_wrapper">
+  <div class="container_content">
+    <div class="container_article">
+      <article>
+        <h1>Working with Forms</h1>
+        {% highlight php %}
+        <?php 
+            $myform = JForm::getInstance('contact', JURI::root(true).'templates/www/forms/upload.xml');
+            echo $myform;
+         ?>
+        {% endhighlight %}
+      </article>
+    </div>
+    <aside class="container_aside">
+      [add nav/banners here]
+    </aside>
+  </div>
+</div>
