@@ -8,11 +8,32 @@ keywords: forms
     <div class="container_article">
       <article>
         <h1>Working with Forms</h1>
+        <h3>Creating forms</h3>
         <p><strong>Official Documentation:</strong> <a href="https://api.joomla.org/cms-3/classes/JForm.html" target="_blank">JForm</a></p>
+        <h3>Getting input values</h3>
+        <p><strong>Official Documentation:</strong> <a href="https://api.joomla.org/cms-3/classes/JInput.html" target="_blank">JInput</a></p>
+        <p><strong>Retrieving request data using </strong> <a href="https://docs.joomla.org/Retrieving_request_data_using_JInput" target="_blank">JInput</a></p>
+        <p><strong>Load JForm post data with </strong> <a href="http://phproberto.com/en/8-joomla-load-jform-post-data-with-jinput" target="_blank">JInput</a></p>
+        <h3>Set and Get values using Session</h3>
+        <?php 
+        $session = JFactory::getSession();
+        $session->set('post-data', $_POST);
+
+        $session = JFactory::getSession();
+        $post = $session->get('post-data');
+
+        // clear the data so we don't process it again
+        $session->clear('post-data');
+         ?>
+        <h3>Creating a profile plugin</h3>
+        <p>Creating a  <a href="https://docs.joomla.org/Creating_a_profile_plugin" target="_blank">profile plugin</a></p>
+        <p>Creating a  <a href="http://officialjoomlabook.com/elin-waring-official-joomla-book-blog/making-a-form-plugin" target="_blank">form plugin</a></p>
         {% highlight php %}
         <?php 
             $myform = JForm::getInstance('contact', JURI::root(true).'templates/www/forms/upload.xml');
             echo $myform;
+            // get entire post values
+            JFactory::getApplication()->input->post->getArray();
          ?>
         {% endhighlight %}
       </article>
