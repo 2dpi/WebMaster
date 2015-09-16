@@ -15,6 +15,7 @@ keywords: forms
         <p><strong>Retrieving request data using </strong> <a href="https://docs.joomla.org/Retrieving_request_data_using_JInput" target="_blank">JInput</a></p>
         <p><strong>Load JForm post data with </strong> <a href="http://phproberto.com/en/8-joomla-load-jform-post-data-with-jinput" target="_blank">JInput</a></p>
         <h3>Set and Get values using Session</h3>
+        {% highlight php %}
         <?php 
         $session = JFactory::getSession();
         $session->set('post-data', $_POST);
@@ -25,6 +26,9 @@ keywords: forms
         // clear the data so we don't process it again
         $session->clear('post-data');
          ?>
+         {% endhighlight %}
+         <h3>Plugin/Events</h3>
+         <a href="https://docs.joomla.org/Plugin/Events/Content#onContentPrepareForm" target="_blank">onContentPrepareForm</a>
         <h3>Creating a profile plugin</h3>
         <p>Creating a  <a href="https://docs.joomla.org/Creating_a_profile_plugin" target="_blank">profile plugin</a></p>
         <p>Creating a  <a href="http://officialjoomlabook.com/elin-waring-official-joomla-book-blog/making-a-form-plugin" target="_blank">form plugin</a></p>
