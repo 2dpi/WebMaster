@@ -36,6 +36,38 @@ keywords: mailer
         }
          ?>
         {% endhighlight %}
+        <h3>Adding attachments</h3>
+        <p>Inspired by this article and <a href="http://www.rupostel.com/joomla/hacks/how-to-add-uploads-to-your-joomla-contact-form" target="_blank">plugin</a></p>
+        {% highlight php %}
+        <?php 
+            class plgContactAttachment extends JPlugin
+            {
+                public function onSubmitContact(&$contact, &$data)
+                {
+                     
+                    jimport( 'joomla.filesystem.file' );
+                    $email = str_replace('@','__at__', $data['contact_email']); 
+                    $dir = DIRECTORY_SEPARATOR.'upload'.DIRECTORY_SEPARATOR.JFile::makeSafe($email).DIRECTORY_SEPARATOR; 
+                    $data['images'] = array(); 
+                    //var_dump($_FILES); die(); 
+                    foreach ($_FILES['jform']['tmp_name'] as $key=>$file)
+                    {
+                        if (empty($_FILES['jform']['tmp_name'][$key])) continue; 
+                        $key = JFile::makeSafe($key); 
+                        JFolder::create($dir); 
+                        $ext = JFile::getExt($_FILES['jform']['name'][$key]); 
+                        //var_dump($_FILES['jform']['tmp_name'][$key]); die(); 
+                        //echo file_get_contents($_FILES['jform']['tmp_name'][$key]); die(); 
+                        $x = JFile::upload($_FILES['jform']['tmp_name'][$key], $dir.$key.'.'.$ext); 
+                        
+                        //echo $DIR.$key.'.'.$ext; die();
+                        $data['images'][] = $dir.$key.'.'.$ext; 
+                    }
+                    //var_dump($data['images']); die(); 
+                }
+            }
+         ?>
+         {% endhighlight %}
       </article>
     </div>
     <aside class="container_aside">
