@@ -49,6 +49,23 @@ keywords: forms
         <p>Form  <a href="https://docs.joomla.org/Form_field" target="_blank">fields</a></p>
         <p>Form  <a href="https://docs.joomla.org/Form_field" target="_blank">showon</a></p>
         <p>Creating a <a href="https://docs.joomla.org/J3.x:Creating_a_search_plugin" target="_blank">search plugin</a></p>
+        <h3>Replacing Fields</h3>
+        {% highlight php %}
+        <?php
+        $element = new SimpleXMLElement('<field 
+                        name="travel_agency"
+                        type="text"
+                        id="travel_agency"
+                        description="PLG_USER_PROFILE_FIELD_TRAVELAGENCY_DESC"
+                        filter="string"
+                        label="Travel Agency"
+                        hint="Travel Agency" 
+                        class="" />');
+        $this->form->setField($element, 'profile', $replace = true);
+        echo $this->form->getInput('travel_agency', 'profile');
+        ?>
+        {% endhighlight %}
+
       </article>
     </div>
     <aside class="container_aside">
