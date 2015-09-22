@@ -1,0 +1,50 @@
+---
+layout: default
+title: WebMaster Pages
+keywords: forms, fields
+---
+<div class="container_body_wrapper">
+  <div class="container_content">
+    <div class="container_article">
+      <article>
+        <h1>Working with Form Fields</h1>
+        <h3>Core Fields</h3>
+        <p>Official <a href="https://docs.joomla.org/Form_field" target="_blank">Documentation</a> </p>
+        <h3>Hints and Tips</h3>
+        <p>Allow raw data (HTML) in a textarea by assigning filter="raw" to parent field in new repeatable field type </p>
+        {% highlight %}
+        <field name="list_templates"
+            type="Repeatable"
+            filter="raw" 
+            icon="list"
+            description="PLG_TINY_FIELD_TEMPLATE_FIELD_ELEMENTS_DESC"
+            label="PLG_TINY_FIELD_TEMPLATE_FIELD_ELEMENTS_LABEL"
+            default="{'template':['Layout','Simple snippet'],'location':['layout1.html','snippet1.html'],'description':['HTMLLayout','Simple HTML snippet']}">
+            <fieldset hidden="true" name="list_templates_modal" repeat="true">
+                <field name="template"
+                    label="PLG_TINY_FIELD_TEMPLATE_FIELD_NAME_LABEL"
+                    size="30"
+                    type="text" />
+                <field name="location"
+                    label="PLG_TINY_FIELD_TEMPLATE_FIELD_LOCATION_LABEL"
+                    description="PLG_TINY_FIELD_TEMPLATE_LOCATION_DESC"
+                    size="30"
+                    type="filelist"
+                    directory="media/editors/tinymce/templates"
+                    exclude="index.html"
+                    hide_default="true"
+                    hide_none="true" />
+                <field name="description"
+                    label="PLG_TINY_FIELD_TEMPLATE_FIELD_DESCRIPTION_LABEL"
+                    size="30"
+                    type="textarea" />
+            </fieldset>
+        </field>
+        {% endhighlight %}
+      </article>
+    </div>
+    <aside class="container_aside">
+      [add nav/banners here]
+    </aside>
+  </div>
+</div>
