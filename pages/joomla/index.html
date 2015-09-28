@@ -16,6 +16,46 @@ keywords: css3, html5, responsive, grid, scalable
         
         <p>View the <a href="https://github.com/joomla/joomla-cms" target="_blank">source code</a></p>
         <p>View the <a href="https://api.joomla.org/cms-3/namespaces/default.html" target="_blank">namespaces / Classes, interfaces and traits</a></p>
+
+{% highlight php %}
+<?php
+// Plugin parameters from inside a plugin
+
+$param = $this->params->get('paramName', defaultValue);
+// Plugin parameters from outside a plugin
+
+$plugin = JPluginHelper::getPlugin('editors', 'codemirror');
+$pluginParams = new JRegistry();
+$pluginParams->loadString($plugin->params);
+$param = $pluginParams->get('paramName', 'defaultValue');
+// Module parameters from inside a module
+
+$param = $params->get('paramName', 'defaultValue');
+// Module parameters from outside a module
+
+$module = JModuleHelper::getModule('banners');
+$moduleParams = new JRegistry();
+$moduleParams->loadString($module->params);
+$param = $moduleParams->get('paramName', 'defaultValue');
+// Component parameters from inside a component
+
+$app = JFactory::getApplication('site');
+$componentParams = $app->getParams('com_content');
+$param = $componentParams->get('paramName', defaultValue);
+// Component parameters from outside a component
+
+$app = JFactory::getApplication('site'); $componentParams = $app->getParams('com_example');
+$param = $componentParams->get('paramName', defaultValue);
+// Template parameters from inside a template
+
+$param = $this->params->get('paramName', defaultValue);
+// Template parameters from outside a template
+
+$app = JFactory::getApplication('site');
+$template = $app->getTemplate(true);
+$param = $template->params->get('paramName', defaultValue);
+?>
+{% endhighlight %}
       </article>
     </div>
     <aside class="container_aside">
