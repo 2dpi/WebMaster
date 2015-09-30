@@ -1,0 +1,26 @@
+---
+layout: default
+title: WebMaster Pages
+keywords: css3, html5, responsive, grid, scalable
+---
+<div class="container_body_wrapper">
+  <div class="container_content">
+    <div class="container_article">
+      <article>
+        <h3>Joomla Javascript Frameworks</h3>
+        
+        <p>View the Javascript Frameworks<a href="https://docs.joomla.org/J3.x:Javascript_Frameworks" target="_blank">Documentation</a></p>
+        <p><strong>Hint:</strong> Neat trick to re-order JS files by re-loading the library. </p>
+
+        {% highlight php %}
+        <?php
+          JHtml::_('jquery.framework'); 
+        ?>
+        {% endhighlight %}
+      </article>
+    </div>
+    <aside class="container_aside">
+      {% include nav_javascript.html %}
+    </aside>
+  </div>
+</div>
