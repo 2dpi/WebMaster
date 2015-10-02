@@ -1,0 +1,29 @@
+---
+layout: default
+title: WebMaster Pages
+keywords: css3, html5, responsive, grid, scalable
+---
+<div class="container_body_wrapper">
+  <div class="container_content">
+    <div class="container_article">
+      <article>
+        <h3>Joomla Search</h3>
+        
+        <p>Triggering plugins in your <a href="https://docs.joomla.org/Supporting_plugins_in_your_component" target="_blank">Component</a></p>
+        <p>onContentSearch & onContentSearchAreas plugin <a href="https://docs.joomla.org/Plugin/Events/Content" target="_blank">events</a></p>
+        <p>Core search <a href="https://github.com/joomla/joomla-cms/tree/master/plugins/search" target="_blank">plugins</a></p>
+
+        {% highlight php %}
+        <?php
+          $dispatcher =& JDispatcher::getInstance();
+          JPluginHelper::importPlugin('search');
+          $results = $dispatcher->trigger('onContentSearch', array($_POST['q']));
+        ?>
+        {% endhighlight %}
+      </article>
+    </div>
+    <aside class="container_aside">
+      {% include nav_session.html %}
+    </aside>
+  </div>
+</div>
