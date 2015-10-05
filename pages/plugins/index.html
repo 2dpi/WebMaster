@@ -7,7 +7,9 @@ keywords: css3, html5, responsive, grid, scalable
   <div class="container_content">
     <div class="container_article">
       <article>
-        <h1>Firing a Plugin</h1>
+        <h1>Joomla Plugin</h1>
+        <h3>Plugin Development</h3>
+        <p>The official Docs on <a href="https://docs.joomla.org/Category:Plugin_Development" target="_blank">Plugin Development</a></p>
         <p>Useful to force a plugin to trigger.</p>
 {% highlight php %}
 <?php 
@@ -17,102 +19,7 @@ keywords: css3, html5, responsive, grid, scalable
 {% endhighlight %}
 
 {% highlight php %}
-<?php 
-  $app       = JFactory::getApplication();
-  $session       = JFactory::getSession();
-  $date            = new JDate();
-  $article_type    = 'subscription';
-  $article_cat   = 25;
-  $author      = 608;
-  $access      = 1;
-  $form_input      = $app->input->get('jform', NULL, NULL);
-  // $form_input   = new JInput($app->input->get('jform', '', 'array')); 
-  $first_name      = $form_input['attribs']['first_name'];
-  $last_name       = $form_input['attribs']['last_name'];
-  $name            = $first_name .' '.$last_name;
-  $email           = $form_input['attribs']['email'];
-  $xmlPath         = JURI::root(true).'templates/www/html/plg_system_paramboost/com_content_article.xml';
-  $form            = JForm::getInstance('jform', $xmlPath,  array('control' => 'jform', 'load_data' => true));
-  $redirect      = JRoute::_('index.php?Itemid=232&save=1');
-  $redirect_sent   = JRoute::_('index.php?Itemid=232&sent=1');
-  $mail_from     = array("reservations@flightconnector.co.za", "Flight Connector");
-  $mail_bcc        = 'reservations@flightconnector.co.za';
-  $save        = $app->input->getCmd('save', '');
-  $sent        = $app->input->getCmd('sent', '');
-  $sitename    = 'Flight Connector';
-  $subject     = 'I/O Subscription'; 
-  $mail_body     = '<h3>Thank You '.$name .'</h3>'
-            .'<p>Subs Received.</p>';
 
-    // echo '<pre>';
-    // print_r($form);
-    // echo '</pre>';
-    //ContentViewArticle
-    // $this->form->reset( true );
-    // $this->form->loadFile( 'templates/www/html/plg_system_paramboost/com_content_article.xml');
-    
-    ////////////////////////////////////////////////
-    // CREATE A NEW CONTENT ITEM WITH POST VALUES //
-    ////////////////////////////////////////////////
-    if ($save == 1) {
-  $article_attribs = array('article_type' => $article_type, 'first_name' => $first_name,'last_name' => $last_name,'email' => $email);
-
-  $subscription             = new stdClass();
-  $subscription->title      = $first_name.' '.$last_name.' '.$email;
-  $subscription->catid      = $article_cat;
-  $subscription->alias      = JFilterOutput::stringURLSafe($name.'-'.$date->toSql());
-  $subscription->created_by = $author;
-  $subscription->access     = $access;
-  $subscription->language   = '*';
-  $subscription->created    = $date->toSql();
-  $subscription->attribs    = json_encode($article_attribs);
-
- 
-  // Insert the object into the user subscription table.
-  $result = JFactory::getDbo()->insertObject('#__content', $subscription);
-
-  if ($sent != 1) {
-    ////////////////////////////////////////////////////
-    // example mail function                          //
-    // components/com_contact/controllers/contact.php //
-    ////////////////////////////////////////////////////
-    $mail = JFactory::getMailer();
-    $mail->addRecipient($email);
-    $mail->addReplyTo($email, $name);
-    $mail->setSender($mail_from);
-    $mail->addBCC($mail_bcc);
-    $mail->isHTML(true);
-    $mail->setSubject($sitename . ': ' . $subject);
-    $mail->setBody($mail_body);
-    $mail->Send();
-  }
-  
-  ///////////////////////////////
-  // REDIRECT AND GET RESPONSE //
-  ///////////////////////////////
-    $msg   = 'Your subscription was successful'; 
-    $app->redirect($redirect_sent, $msg);
-  }
-
- ?>
-
-<form method="post" id="subscribe" action="<?php echo $redirect; ?>"> 
-  <div class="row">
-    <?php //echo $form->getlabel('name'); ?>
-    <?php echo $form->getInput('first_name', 'attribs'); ?>
-  <div class="row">
-    <?php //echo $form->getlabel('surname'); ?>
-    <?php echo $form->getInput('last_name', 'attribs'); ?>
-  </div>
-  <div class="row">
-    <?php //echo $form->getlabel('email'); ?>
-    <?php echo $form->getInput('email', 'attribs'); ?>
-  </div>
-  <div class="row">
-    <?php echo JHtml::_('form.token'); ?>   
-    <button type="submit" class="btn wide_100">Sumbit</button>
-  </div>
-</form>
  {% endhighlight %}
 
 
