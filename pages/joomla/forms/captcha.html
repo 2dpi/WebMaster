@@ -1,0 +1,35 @@
+---
+layout: default
+title: WebMaster Pages
+keywords: forms, fields
+---
+<div class="container_body_wrapper">
+  <div class="container_content">
+    <div class="container_article">
+      <article>
+        <h1>Adding Captcha</h1>
+        <h3>Core Plugin</h3>
+        <p>Official <a href="https://docs.joomla.org/How_do_you_use_Recaptcha_in_Joomla%3F" target="_blank">Documentation</a> </p>
+        <p>Reference <a href="https://www.ostraining.com/blog/joomla/new-recaptcha-joomla/" target="_blank">Documentation</a> </p>
+        <p>Reference <a href="http://myresourcelist.blogspot.co.za/2013/07/how-to-use-capture-in-custom-joomla-form.html" target="_blank">Documentation</a> </p>
+         <p>Reference <a href="http://webdesign.tutsplus.com/tutorials/how-to-integrate-google-no-captcha-recaptcha-on-your-website--cms-23024" target="_blank">Documentation</a> </p>
+         <p>Google <a href="http://www.google.com/recaptcha/api2/demo" target="_blank">Demo</a> </p>
+        {% highlight php %}
+		<?php 
+			$requestData = JFactory::getApplication()->input->get('jform'.$params['form_id'], '', 'array');
+			JPluginHelper::importPlugin('captcha');
+			$dispatcher = JEventDispatcher::getInstance();
+			$res = $dispatcher->trigger('onCheckAnswer',$requestData['recaptcha_response_field']);
+			if(!$res[0]){
+			    die('Invalid Captcha');
+			}
+		?>
+        {% endhighlight %}
+      </article>
+    </div>
+    <aside class="container_aside">
+      {% include nav_captcha.html %}
+    </aside>
+  </div>
+</div>
+
