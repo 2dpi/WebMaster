@@ -8,6 +8,7 @@ keywords: mailer
     <div class="container_article">
       <article>
         <h1>Sending Email using Mailer</h1>
+        <p>Joomal! <a href="https://docs.joomla.org/Sending_email_from_extensions" target="_blank">example</a></p>
         {% highlight php %}
         <?php 
         $mailer = JFactory::getMailer();
@@ -36,6 +37,10 @@ keywords: mailer
         }
          ?>
         {% endhighlight %}
+        <h3>Embedding Images</h3>
+        <p>Example <a href="http://stackoverflow.com/questions/6095285/how-can-i-attach-an-image-using-phpmailer" target="_blank">here</a></p>
+        {% highlight php %}
+        {% endhighlight %}
         <h3>Adding attachments</h3>
         <p>Inspired by this article and <a href="http://www.rupostel.com/joomla/hacks/how-to-add-uploads-to-your-joomla-contact-form" target="_blank">plugin</a></p>
         {% highlight php %}
@@ -47,7 +52,7 @@ keywords: mailer
                      
                     jimport( 'joomla.filesystem.file' );
                     $email = str_replace('@','__at__', $data['contact_email']); 
-                    $dir = DIRECTORY_SEPARATOR.'upload'.DIRECTORY_SEPARATOR.JFile::makeSafe($email).DIRECTORY_SEPARATOR; 
+                    $dir = '/upload/'.JFile::makeSafe($email).'/'; 
                     $data['images'] = array(); 
                     //var_dump($_FILES); die(); 
                     foreach ($_FILES['jform']['tmp_name'] as $key=>$file)
