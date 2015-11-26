@@ -1,0 +1,38 @@
+---
+layout: default
+title: WebMaster Pages
+keywords: css3, html5, responsive, grid, scalable
+---
+<div class="container_body_wrapper">
+  <div class="container_content">
+    <div class="container_article">
+      <article>
+        <h1>Jform</h1>
+        {% highlight php %}
+		<?php
+		// FORM FIELDS
+		foreach($form->getFieldset('extrafields') as $field){
+			$field_id   = $field->id;
+			$field_name = $field->name;
+			$field_type = $field->type;
+		}
+		// name, group, value
+		$form->getField('first_name','attribs')->name;
+		$form->getField('first_name','attribs')->id;
+		$form->getField('first_name','attribs')->type;
+		// get attributes
+		$form->getFieldAttribute('first_name', 'class', '', 'attribs');
+		$form->getFieldAttribute('first_name', 'hint', '', 'attribs');
+		$form->getFieldAttribute('first_name', 'required', '', 'attribs');
+		// set attributes
+		$form->setFieldAttribute('first_name', 'required', 'true', 'attribs');
+		?>
+        {% endhighlight %}
+
+      </article>
+    </div>
+    <aside class="container_aside">
+      [add nav/banners here]
+    </aside>
+  </div>
+</div>

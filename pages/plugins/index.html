@@ -11,19 +11,17 @@ keywords: css3, html5, responsive, grid, scalable
         <h3>Plugin Development</h3>
         <p>The official Docs on <a href="https://docs.joomla.org/Category:Plugin_Development" target="_blank">Plugin Development</a></p>
         <p>Useful to force a plugin to trigger.</p>
-{% highlight php %}
-<?php 
-	$text = '{loadmodule customcode,Terms and Conditions}';
-	echo JHtml::_('content.prepare', $text);
- ?>
-{% endhighlight %}
-
-{% highlight php %}
-
- {% endhighlight %}
-
-
-
+        {% highlight php %}
+        <?php 
+        	$text = '{loadmodule customcode,Terms and Conditions}';
+        	echo JHtml::_('content.prepare', $text);
+          // OR
+          JPluginHelper::importPlugin('content'); 
+          $dispatcher = JEventDispatcher::getInstance();
+          $results = $dispatcher->trigger( 'imgresize', array( 'xxx' , 'xxx', 'xxx') );
+          echo $results;
+         ?>
+        {% endhighlight %}
       </article>
     </div>
     <aside class="container_aside">

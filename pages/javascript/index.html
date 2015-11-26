@@ -1,0 +1,33 @@
+---
+layout: default
+title: WebMaster Pages
+keywords: css3, html5, responsive, grid, scalable
+---
+<div class="container_body_wrapper">
+  <div class="container_content">
+    <div class="container_article">
+      <article>
+        <h1>Javascript</h1>
+        {% highlight js %}
+        <script>
+	    	jQuery(document).ready(function($) {
+	        	$("#jform'.$params['form_id'].'_attribs_first_name").change(function(){
+	        	    var a = $("#jform'.$params['form_id'].'_attribs_first_name").val();
+	        	    $("#jform'.$params['form_id'].'_art_title").val(a);
+	        	});
+	      	});
+        </script>
+        {% endhighlight %}
+        {% highlight php %}
+        <?php echo "this is my home page" ?>
+        {% endhighlight %}
+		
+        {% gist b7969592177bfaca51e4 %}
+        adding a background image to individual article pages in Joomla
+      </article>
+    </div>
+    <aside class="container_aside">
+      [add nav/banners here]
+    </aside>
+  </div>
+</div>

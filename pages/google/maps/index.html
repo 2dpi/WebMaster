@@ -1,0 +1,110 @@
+---
+layout: default
+title: WebMaster Pages
+keywords: css3, html5, responsive, grid, scalable
+---
+<div class="container_body_wrapper">
+  <div class="container_content">
+    <div class="container_article">
+      <article>
+        <h3>Google Apps</h3>
+        <p>Google Maps APIs<a href="https://www.google.com/intx/en_uk/work/mapsearth/products/mapsapi.html" target="_blank">APIs</a></p>
+        <p><a href="https://console.developers.google.com" target="_blank">Developers Console</a></p>
+        <p><a href="https://www.google.com/maps/d/u/0/" target="_blank">My Maps</a></p>
+        <p>Google Maps <a href="https://developers.google.com/maps/documentation/embed/guide" target="_blank">Embed API</a></p>
+        <p>Google Maps <a href="https://developers.google.com/maps/documentation/embed/start" target="_blank">Quick Start</a></p>
+        <p><a href="https://developers.google.com/maps/documentation/ios-sdk/urlscheme" target="_blank">urlscheme</a></p>
+        <p>Everything You Never Wanted to Know About Google Maps' Parameters<a href="https://moz.com/ugc/everything-you-never-wanted-to-know-about-google-maps-parameters" target="_blank">Parameters</a></p>
+        <p>Tutorials - <a href="https://developers.google.com/maps/tutorials/" target="_blank">JavaScript API v3</a></p>
+        <p>Code Samples <a href="https://developers.google.com/maps/documentation/javascript/examples/" target="_blank">Google Maps Javascript API</a></p>
+        <p>Jquery <a href="http://tilotiti.github.io/jQuery-Google-Map/" target="_blank">Google Map</a></p>
+        <p>Jquery <a href="https://hpneo.github.io/gmaps/examples.html" target="_blank">gmaps.js</a></p>
+        <p><a href="https://mapbuildr.com/" target="_blank">mapbuildr</a></p>
+        <p><a href="http://www.mapseasy.com/adress-to-gps-coordinates.php" target="_blank">tools</a></p>
+        <p><a href="http://www.techigniter.in/javascript/how-to-use-google-maps-to-show-text-directions/" target="_blank">example</a></p>
+        <p><a href="http://www.aspsnippets.com/Articles/Google-Maps-API-V3-DirectionsService-Driving-Directions-example.aspx" target="_blank">example</a></p>
+        <p><a href="http://www.aspsnippets.com/Articles/Implement-Google-Places-Autocomplete-TextBox-without-Google-Maps-with-Place-changed-event.aspx" target="_blank">example</a></p>
+
+
+{% highlight txt %}
+//Spaces can be changed to "+" or encoded as "%20".
+
+//Linking to a location (No directions)
+https://www.google.com/maps?q=760+West+Genesee+Street+Syracuse+NY+13204
+
+//No starting point (User input required to generate directions).
+https://www.google.com/maps?daddr=760+West+Genesee+Street+Syracuse+NY+13204
+
+//With a set location as starting point (Automatically generates directions with no user input required).
+https://www.google.com/maps?saddr=760+West+Genesee+Street+Syracuse+NY+13204&daddr=314+Avery+Avenue+Syracuse+NY+13204
+
+//With "My Location" as starting point (Automatically generates directions with no user input required).
+https://www.google.com/maps?saddr=My+Location&daddr=760+West+Genesee+Street+Syracuse+NY+13204
+
+//Current Location to Latitude and Longitude
+https://www.google.com/maps?saddr=My+Location&daddr=43.12345,-76.12345
+
+//Query search of a Latitude and Longitude
+//Also shows setting a default zoom level
+https://www.google.com/maps?ll=43.12345,-76.12345&q=food&amp;z=14
+
+//String search as destination
+https://www.google.com/maps?saddr=My+Location&daddr=Pinckney+Hugo+Group
+
+// directions
+var directionsDisplay; 
+var directionsService = new google.maps.DirectionsService(); 
+
+function initialize() { 
+directionsDisplay = new google.maps.DirectionsRenderer(); 
+} 
+
+function displayDirections(sourceAddress, destinationAddress, map, panel) { 
+var request = { 
+origin: sourceAddress, 
+destination: destinationAddress, 
+travelMode: google.maps.DirectionsTravelMode.DRIVING 
+}; 
+directionsService.route(request, function(response, status) { 
+if (panel !== null) { 
+directionsDisplay.setPanel(panel); 
+} 
+directionsDisplay.setMap(map); 
+
+if (status == google.maps.DirectionsStatus.OK) { 
+directionsDisplay.setDirections(response); 
+} else { 
+alert("Directions query unsuccessful. Response status: " + status); 
+} 
+}); 
+}
+
+{% endhighlight %}
+        <div class='embed-container maps'>
+            <iframe width='600' height='450' frameborder='0' src='http://foo.com'>  </iframe>
+        </div>
+{% highlight CSS %}
+<style>
+  .maps iframe{
+    pointer-events: none;
+}
+</style>
+{% endhighlight %}
+{% highlight JS %}
+<script>
+$('.maps').click(function () {
+    $('.maps iframe').css("pointer-events", "auto");
+});
+
+$( ".maps" ).mouseleave(function() {
+  $('.maps iframe').css("pointer-events", "none"); 
+});
+</script>
+{% endhighlight %}
+      </article>
+    </div>
+    <aside class="container_aside">
+      {% include nav_google.html %}
+    </aside>
+  </div>
+</div>
